@@ -21,3 +21,10 @@ Returns a string containing the string following the `#` character in the URL. I
 `str` - A string to be converted into a URL friendly "slug".
 
 Returns a string containing a URL friendly "slug" of the argument. The input is converted to lower case, special characters are removed and spaces are replaced by hypens. For example, the input string "Quick &amp; Easy" would become "quick-easy".
+
+<h2>URLUtils.makeQueryString(obj, includeUndefined)</h2>
+
+`obj` - An object to create a query string from.
+`includeUndefined` - Boolean value to specify whether undefined values should be included in the query string.
+
+Returns a string in the format of a URL query string (`key=value&key2=value2`). Nested objects are flattened so properties of nested objects will appear in the string as if they were properties of `obj`. If `includeUndefined` is `true`, properties whose value is `undefined` will appear in the string with a value of `undefined`: `key=undefined&key2=value`. If `includeUndefined` is `false`, such properties will appear as the empty string: `key=&key2=value`.
