@@ -24,28 +24,28 @@
  * THE SOFTWARE.
  */
 var URLUtils = {
-	getParam: function(name) {
-		var regex = new RegExp("[?&]" + name + "=([^&#]*)"),
-			results = regex.exec(window.location.href);
-		if(results) {
-			return results[1];
-		}
-		return false;
-	},
-	getParams: function() {
-		var regex = /[?&]([^=#]+)=([^&#]*)/g,
-			url = window.location.href,
-			params = {},
-			match;
-		while(match = regex.exec(url)) {
-			params[match[1]] = match[2];
-		}
-		return params;
-	},
-	getHash: function() {
-		return window.location.hash.substring(1);
-	},
-	makeSlug: function(str) {
-		return str.toLowerCase().replace(/[^\w ]+/g, "").replace(/ +/g, "-");
-	}
+    getParam: function(name) {
+        var regex = new RegExp("[?&]" + name + "=([^&#]*)"),
+            results = regex.exec(window.location.href);
+        if(results) {
+            return results[1];
+        }
+        return false;
+    },
+    getParams: function() {
+    	var regex = /[?&]([^=#]+)=([^&#]*)/g,
+    	    url = window.location.href,
+    	    params = {},
+    	    match;
+    	while(match = regex.exec(url)) {
+    	    params[match[1]] = match[2];    
+        }
+        return params;
+    },
+    getHash: function() {
+        return window.location.hash.substring(1);
+    },
+    makeSlug: function(str) {
+        return str.toLowerCase().replace(/[^\w ]+/g, "").replace(/ +/g, "-");
+    }
 };
