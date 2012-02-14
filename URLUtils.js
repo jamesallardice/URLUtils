@@ -47,5 +47,25 @@ var URLUtils = {
     },
     makeSlug: function(str) {
         return str.toLowerCase().replace(/[^\w ]+/g, "").replace(/ +/g, "-");
+    },
+    makeQueryString: function(obj, includeUndefined) {
+        var qs = [],
+            str,
+            val,
+            type;
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop)) {
+                val = obj[prop];
+                type = Object.prototype.toString.call(val);
+                qs.push(
+                    type === "[object Object]" ?
+                        URLUtils.makeQueryString(val) :
+                        type !== "[object Undefined]" || includeUndefined ?
+                            encodeURIComponent(prop) + "=" + encodeURIComponent(val) :
+                            encodeURIComponent(prop)
+                );
+            }
+        }
+        return qs.join("&");
     }
 };
