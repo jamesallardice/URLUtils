@@ -28,7 +28,7 @@ var URLUtils = {
         var regex = new RegExp("[?&]" + name + "=([^&#]*)"),
             results = regex.exec(window.location.href);
         if(results) {
-            return results[1];
+            return decodeURIComponent(results[1]);
         }
         return false;
     },
@@ -38,7 +38,7 @@ var URLUtils = {
     	    params = {},
     	    match;
     	while(match = regex.exec(url)) {
-    	    params[match[1]] = match[2];    
+    	    params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);    
         }
         return params;
     },
