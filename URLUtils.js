@@ -62,7 +62,7 @@ var URLUtils = {
                         URLUtils.makeQueryString(val) :
                         type !== "[object Undefined]" || includeUndefined ?
                             encodeURIComponent(prop) + "=" + encodeURIComponent(val) :
-                            encodeURIComponent(prop)
+                            encodeURIComponent(prop) + "="
                 );
             }
         }
